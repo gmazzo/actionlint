@@ -43,17 +43,11 @@ if [[ "$1" == "-h" || "$1" == "--help" ]]; then
 fi
 
 # Default value is updated manually on release
-version="1.7.1"
+version="1.8.0-rc"
 if [ -n "$1" ]; then
     if [[ "$1" != 'latest' && "$1" != 'LATEST' ]]; then
-        if [[ "$1" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             version="$1"
-        else
-            echo "Given version '$1' does not match to regex '^[0-9]+\.[0-9]+\.[0-9]+$' nor equal to 'latest'" >&2
-            echo >&2
-            usage
-            exit 1
-        fi
+        
     fi
 fi
 
@@ -111,7 +105,7 @@ echo "Detected OS=${os} ext=${ext} arch=${arch}"
 
 # https://github.com/rhysd/actionlint/releases/download/v1.0.0/actionlint_1.0.0_linux_386.tar.gz
 file="actionlint_${version}_${os}_${arch}.${ext}"
-url="https://github.com/rhysd/actionlint/releases/download/v${version}/${file}"
+url="https://github.com/gmazzo/actionlint/releases/download/v${version}/${file}"
 
 echo "Downloading ${url} with curl"
 
